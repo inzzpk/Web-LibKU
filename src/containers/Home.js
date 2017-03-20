@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import { Button } from 'react-bootstrap'
 import * as actions from 'actions'
 
 const { getTest } = actions
@@ -15,12 +16,12 @@ class Home extends Component {
 						JSON.stringify(this.props.test)
 					}
 				</div>
-				<button className="button is-danger" onClick={this.props.getTest}>
+				<Button bsStyle="danger" bsSize="large" onClick={this.props.getTest}>
 					Load
-				</button>
+				</Button>
 				<br />
 				<Link to='/about'>
-					<button className="button is-primary is-large">Button</button>
+					<Button bsStyle="success" bsSize="large">button</Button>
 				</Link>
 			</div>
 		)

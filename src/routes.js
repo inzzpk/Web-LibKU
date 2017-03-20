@@ -16,6 +16,5 @@ export default (store, history) => (
 			<IndexRoute component={Home} />
 			<route path='about' component={About} />
 		</Route>
-
 	</Router>
 )

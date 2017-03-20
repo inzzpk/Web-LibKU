@@ -7,7 +7,7 @@ const projectRoot = path.resolve(__dirname, '../')
 
 module.exports = {
 	entry: [
-		'bulma/bulma.sass',
+		'bootstrap/dist/css/bootstrap.min.css',
 		'font-awesome/css/font-awesome.min.css'
 	],
 	output: {
