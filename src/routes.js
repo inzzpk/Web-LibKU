@@ -8,6 +8,10 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import About from 'containers/About'
 import App from 'containers/App'
 import Home from 'containers/Home'
+import Intro from 'containers/Intro'
+import News from 'containers/News'
+import NewsList from 'containers/NewsList'
+import IntroList from 'containers/IntroList'
 
 
 export default (store, history) => (
@@ -15,6 +19,10 @@ export default (store, history) => (
 		<Route path='/' component={App}>
 			<IndexRoute component={Home} />
 			<route path='about' component={About} />
+			<route path='intro' component={Intro} />
+			<route path='introlist' component={IntroList} />
+			<route path='newslist' component={NewsList} />
+			<route path='news' component={News} />
 		</Route>
 	</Router>
 )

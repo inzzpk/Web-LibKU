@@ -23,6 +23,10 @@ class Home extends Component {
 				<Link to='/about'>
 					<Button bsStyle="success" bsSize="large">button</Button>
 				</Link>
+				<br />
+				<Link to='/intro'>
+					<Button bsStyle="success" bsSize="large">Intro</Button>
+				</Link>
 			</div>
 		)
 	}

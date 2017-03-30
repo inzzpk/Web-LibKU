@@ -10,7 +10,7 @@ class About extends Component {
 	render(){
 		const { handleSubmit } = this.props
 		return (
-			<div>
+			<div className="container">
 			    <form onSubmit={handleSubmit} className='form' action='javascript:void(0)'>
 					<Field name="dataInput" component="input" type="text" autoFocus />
 					<button
