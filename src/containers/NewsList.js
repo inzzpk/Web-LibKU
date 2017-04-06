@@ -7,6 +7,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 
 class NewsList extends Component {
 
+
 	render(){
   return (
       <div className="container">
@@ -31,7 +32,7 @@ class NewsList extends Component {
                       <tr >
                           <td>1</td>
                           <td>แจ้งเวลาการเปิดปิด</td>
-                          <td>อิอิ</td>
+                          <td>จันทร์- ศุกร์ 8.30-16.30</td>
                           <td> 
                           <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
                           <button type='button' className="btn btn-sm btn-danger">ลบ</button>
@@ -39,8 +40,8 @@ class NewsList extends Component {
                       </tr>
                       <tr >
                           <td>2</td>
-                          <td>งานหนังสือ</td>
-                          <td>อิอิ</td>
+                          <td>ขอเชิญร่วมกิจกรรม You pick … We buy ครั้งที่ 11</td>
+                          <td>เปิดรับสมัครอาจารย์ นิสิต และบุคลากรมหาวิทยาลัยเกษตรศาสตร์ บางเขน มาร่วมกันคัดเลือกหนังสือและโสตทัศนวัสดุ เพื่อนำมาให้บริการในสำนักหอสมุด</td>
                           <td> 
                           <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
                           <button type='button' className="btn btn-sm btn-danger">ลบ</button>
@@ -60,7 +61,7 @@ class NewsList extends Component {
 
 
 const mapStateToProps = (state) => ({
-
+    
 })
 
 const mapDispatchToProps = (dispatch) => ({
