@@ -1,4 +1,4 @@
-import { CALL_API } from 'redux-api-middleware'
+// import { CALL_API } from 'redux-api-middleware'
 
 // export const getTest = () => dispatch => dispatch({
 // 	[CALL_API]: {
@@ -16,6 +16,9 @@ import { CALL_API } from 'redux-api-middleware'
 // 	}
 // })
 
+//----------------
+
+
 
 //-------------------------------
 
@@ -23,8 +26,7 @@ export function getTest(){
 	return (dispatch, getState) =>{
 		let url = `http://localhost:8888/Laravel-LibKU/public/api/bookinfos`
 		return get(url).then(resp => {
-			console.log(resp)
-			author_details(resp)
+			dispatch(author_details(resp))
 		}).catch( err => {
 			console.log(err)
 		})
@@ -35,13 +37,13 @@ export function getTest(){
 export function get(url){
 	let headers = {
 		'Accept': 'application/json',
-		'Content-Type': 'application/json',
-		'dataType': 'json'
+		'Content-Type': 'application/json'
 	}
 	let options = Object.assign({method: 'GET'})
 	options.header = headers
-	return fetch(url,options).then(resp => {
-		var json = resp.json();
+	return fetch(url,options).then(
+		resp => {
+			var json = resp.json();
 		if (resp.ok){
 			return json
 		}

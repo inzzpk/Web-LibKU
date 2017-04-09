@@ -1,2 +1,5 @@
 export * from 'actions/testActions'
-export * from 'actions/fetchBookInfos'
+export * from 'actions/fetchIntros'
+export * from 'actions/fetchNews'
+
+

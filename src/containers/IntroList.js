@@ -4,11 +4,20 @@ import { Link } from 'react-router'
 import { Button } from 'react-bootstrap'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { LinkContainer } from 'react-router-bootstrap'
+import * as actions from 'actions'
+
+const { fetchIntros } = actions
 
 
 class IntroList extends Component {
 
+  componentWillMount() {
+    this.props.fetchIntros()
+  }
 
+  getData(){
+    return Object.keys(this.props.intro).map(key => this.props.intro[key])
+  }
 
 	render(){
   return (
@@ -31,24 +40,17 @@ class IntroList extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr >
-                          <td>1</td>
-                          <td>พระราชพงศาวดารกรุงรัตนโกสินทร์ รัชกาลที่ 5</td>
-                          <td>สมเด็จฯ กรมพระยาดำรงราชานุภาพ, กรุงเทพฯ : ไทยควอลิตี้บุ๊คส์ (2006), 2559</td>
+                          {this.getData().map(data => 
+                          <tr key={data.id}>
+                          <td>{data.id}</td>
+                          <td>{data.tittle}</td>
+                          <td>{data.author}</td>
                           <td> 
                           <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
                           <button type='button' className="btn btn-sm btn-danger">ลบ</button>
                         </td>
                       </tr>
-                      <tr >
-                          <td>2</td>
-                          <td>The secret of volume by price</td>
-                          <td>จุติ เสนางคนิกร, กรุงเทพฯ : ซุปเปอร์เทรดเดอร์ พับลิชชิ่ง จำกัด, 2559</td>
-                          <td> 
-                          <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
-                          <button type='button' className="btn btn-sm btn-danger">ลบ</button>
-                        </td>
-                      </tr>
+                      )}
                     </tbody>
                   </table>
                   
@@ -63,13 +65,14 @@ class IntroList extends Component {
 
 
 const mapStateToProps = (state) => ({
-
-
+    intro: state.intros.get.data
 })
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = {
+    fetchIntros
+}
 
-})
+
 
 export default connect(
 	mapStateToProps,

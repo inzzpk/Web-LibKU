@@ -7,8 +7,20 @@ const initialState = {
 export default (state = initialState, action) => {
 	switch(action.type) {
 		case 'LOAD_DETAILS_SUCCESS':
-		console.log("HEllo")
-			return {action}
+			return {
+				...state,
+				get: {
+					...state.get,
+					data: action.response
+				}
+			}
+		case 'LOAD_DETAILS_FAILURE':
+			return {
+				...state,
+				get: {
+					...state.get
+				}
+			}
 		case 'GET_TEST_REQUEST':
 			console.log("TEST1")
 			console.log(action)

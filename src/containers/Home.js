@@ -7,14 +7,30 @@ import * as actions from 'actions'
 const { getTest } = actions
 
 class Home extends Component {
+
+	getData(){
+		return Object.keys(this.props.test).map(key => this.props.test[key])
+	}
+	
 	render(){
 		return (
 			<div>
 				<div className="content">
 				<h1>Home</h1>
-					{ 
-						JSON.stringify(this.props.test)
-					}
+				<div>
+				<table className="table table-striped">
+      				<thead>
+			
+			        {this.getData().map(data => 
+			        	<tr key={data.id}>
+			        	  <td>{data.id}</td>
+                          <td>{data.tittle}</td>
+                          <td>{data.author}</td>
+                        </tr>
+			        )}
+			  		</thead>
+			  	</table>
+			  	</div>
 				</div>
 				<Button bsStyle="danger" bsSize="large" onClick={this.props.getTest}>
 					Load
