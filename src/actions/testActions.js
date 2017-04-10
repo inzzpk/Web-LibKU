@@ -1,3 +1,5 @@
+import { push } from 'react-router-redux'
+
 // import { CALL_API } from 'redux-api-middleware'
 
 // export const getTest = () => dispatch => dispatch({
@@ -27,6 +29,26 @@ export function getTest(){
 		let url = `http://localhost:8888/Laravel-LibKU/public/api/bookinfos`
 		return get(url).then(resp => {
 			dispatch(author_details(resp))
+		}).catch( err => {
+			console.log(err)
+		})
+	}
+}
+
+export function sendForm(title,detail,callno,link,img){
+	return (dispatch, getState) =>{
+		const param= [
+		`title=${title}`,
+		`detail=${detail}`,
+		`callno=${callno}`,
+		`link=${link}`,
+		`img=${img}`,
+		].join('&')
+		let url = `http://localhost:8888/Laravel-LibKU/public/api/createBookInfos?${param}`
+		return get(url).then(resp => {
+			console.log(resp)
+			dispatch(push('/introlist'))
+
 		}).catch( err => {
 			console.log(err)
 		})

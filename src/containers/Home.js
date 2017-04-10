@@ -55,7 +55,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	getTest(){
 		dispatch(getTest())
-	}
+	},
 })
 
 export default connect(
