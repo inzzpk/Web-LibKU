@@ -43,8 +43,8 @@ class IntroList extends Component {
                           {this.getData().map(data => 
                           <tr key={data.id}>
                           <td>{data.id}</td>
-                          <td>{data.tittle}</td>
-                          <td>{data.author}</td>
+                          <td>{data.title}</td>
+                          <td>{data.callno}</td>
                           <td> 
                           <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
                           <button type='button' className="btn btn-sm btn-danger">ลบ</button>
@@ -71,8 +71,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     fetchIntros
 }
-
-
 
 export default connect(
 	mapStateToProps,
