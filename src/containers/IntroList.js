@@ -6,7 +6,7 @@ import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { LinkContainer } from 'react-router-bootstrap'
 import * as actions from 'actions'
 
-const { fetchIntros } = actions
+const { fetchIntros, deleteIntros } = actions
 
 
 class IntroList extends Component {
@@ -47,7 +47,7 @@ class IntroList extends Component {
                           <td>{data.callno}</td>
                           <td> 
                           <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
-                          <button type='button' className="btn btn-sm btn-danger">ลบ</button>
+                          <button type='button' className="btn btn-sm btn-danger" onClick={() => console.log(data.id)}>ลบ</button>
                         </td>
                       </tr>
                       )}
@@ -69,10 +69,13 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    fetchIntros
+    fetchIntros,
+    deleteIntros
 }
 
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(IntroList)
+
+                          //<button type='button' className="btn btn-sm btn-danger" onClick={() => onClickButton({data.id},user)}>ลบ</button>

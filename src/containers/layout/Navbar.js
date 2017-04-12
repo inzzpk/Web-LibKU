@@ -16,7 +16,7 @@ class Navbar extends Component {
 						 <span className="icon-bar"></span>
 						 <span className="icon-bar"></span>
 						</button>
-						<Link to='' className="navbar-brand">
+						<Link to='/' className="navbar-brand">
 							<span>Lib KU</span>
 							<small className="hidden-xs"> Admin</small>
 						</Link>
