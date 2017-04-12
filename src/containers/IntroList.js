@@ -11,12 +11,32 @@ const { fetchIntros, deleteIntros } = actions
 
 class IntroList extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      current: true
+    }
+  }
+
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return this.props.intro !== nextProps.intro
+  // }
+
   componentWillMount() {
     this.props.fetchIntros()
   }
 
-  getData(){
+  
+
+  getData(){ 
     return Object.keys(this.props.intro).map(key => this.props.intro[key])
+  }
+
+  deleteItems(id){
+    this.props.deleteIntros(id).then( ()=> {
+      this.props.fetchIntros()
+    })
   }
 
 	render(){
@@ -47,7 +67,7 @@ class IntroList extends Component {
                             <td>{data.callno}</td>
                             <td> 
                             <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
-                            <button type='button' className="btn btn-sm btn-danger" onClick={this.props.deleteIntros(data.id)}>ลบ</button>
+                            <button type='button' className="btn btn-sm btn-danger" onClick={() => this.deleteItems(data.id) }>ลบ</button>
                         </td>
                       </tr>
                       )}
