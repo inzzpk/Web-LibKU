@@ -21,7 +21,7 @@ export function fetchNews() {
 	let options = Object.assign({method: 'GET'})
 	options.header = headers
 	return (dispatch, getState) => {
-		fetch(`http://localhost:8888/Laravel-LibKU/public/api/bookinfos`, options)
+		fetch(`http://localhost:8888/Laravel-LibKU/public/api/news`, options)
 		.then(
 			(response) => {
 				var json = response.json();

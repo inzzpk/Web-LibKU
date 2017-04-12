@@ -1,16 +1,16 @@
 import { push } from 'react-router-redux'
 
-export function deleteIntros(id) {
+export function deleteNews(id) {
 	
 	return (dispatch, getState) =>{
 		const param= [
 		`id=${id}`,
 		].join('&')
-		let url = `http://localhost:8888/Laravel-LibKU/public/api/deleteBookInfos?${param}`
-		return getdelete(url).then(resp => {
+		let url = `http://localhost:8888/Laravel-LibKU/public/api/deleteNews?${param}`
+		return getdeletenews(url).then(resp => {
 			// console.log(resp)
 			console.log("delete complete")
-			dispatch(push('/introlist'))
+			dispatch(push('/newslist'))
 
 		}).catch( err => {
 			console.log(err)
@@ -18,7 +18,7 @@ export function deleteIntros(id) {
 	}
 }
 
-export function getdelete(url){
+export function getdeletenews(url){
 	let headers = {
 		'Accept': 'application/json',
 		'Content-Type': 'application/json'

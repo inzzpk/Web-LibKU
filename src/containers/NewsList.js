@@ -4,11 +4,30 @@ import { Link } from 'react-router'
 import { Button } from 'react-bootstrap'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { LinkContainer } from 'react-router-bootstrap'
+import * as actions from 'actions'
+
+const { fetchNews, deleteNews } = actions
+
 
 class NewsList extends Component {
 
+  componentWillMount() {
+    this.props.fetchNews()
+  }
 
-	render(){
+  
+
+  getData(){ 
+    return Object.keys(this.props.news).map(key => this.props.news[key])
+  }
+
+  deleteItems(id){
+    this.props.deleteNews(id).then( ()=> {
+      this.props.fetchNews()
+    })
+  }
+
+  render(){
   return (
       <div className="container">
           <div className="row">
@@ -29,24 +48,16 @@ class NewsList extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr >
-                          <td>1</td>
-                          <td>แจ้งเวลาการเปิดปิด</td>
-                          <td>จันทร์- ศุกร์ 8.30-16.30</td>
-                          <td> 
-                          <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
-                          <button type='button' className="btn btn-sm btn-danger">ลบ</button>
+                          {this.getData().map((data) => 
+                          <tr key={data.id} >
+                            <td>{data.id}</td>
+                            <td>{data.title}</td>
+                            <td>{data.detail}</td>
+                            <td> 
+                            <button type='button' className="btn btn-sm btn-danger" onClick={() => this.deleteItems(data.id) }>ลบ</button>
                         </td>
                       </tr>
-                      <tr >
-                          <td>2</td>
-                          <td>ขอเชิญร่วมกิจกรรม You pick … We buy ครั้งที่ 11</td>
-                          <td>เปิดรับสมัครอาจารย์ นิสิต และบุคลากรมหาวิทยาลัยเกษตรศาสตร์ บางเขน มาร่วมกันคัดเลือกหนังสือและโสตทัศนวัสดุ เพื่อนำมาให้บริการในสำนักหอสมุด</td>
-                          <td> 
-                          <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
-                          <button type='button' className="btn btn-sm btn-danger">ลบ</button>
-                        </td>
-                      </tr>
+                      )}
                     </tbody>
                   </table>
                   
@@ -56,19 +67,22 @@ class NewsList extends Component {
           </div>
       </div>
   )
-	}
+  }
 }
 
 
 const mapStateToProps = (state) => ({
-    
+    news: state.news.get.data
 })
 
-const mapDispatchToProps = (dispatch) => ({
-
-})
+const mapDispatchToProps = {
+    fetchNews,
+    deleteNews
+}
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(NewsList)
+
+                          //<button type='button' className="btn btn-sm btn-danger" onClick={() => onClickButton({data.id},user)}>ลบ</button>

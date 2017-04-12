@@ -19,10 +19,6 @@ class IntroList extends Component {
   }
 
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return this.props.intro !== nextProps.intro
-  // }
-
   componentWillMount() {
     this.props.fetchIntros()
   }
@@ -66,7 +62,6 @@ class IntroList extends Component {
                             <td>{data.title}</td>
                             <td>{data.callno}</td>
                             <td> 
-                            <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
                             <button type='button' className="btn btn-sm btn-danger" onClick={() => this.deleteItems(data.id) }>ลบ</button>
                         </td>
                       </tr>
