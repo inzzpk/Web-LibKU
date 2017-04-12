@@ -40,14 +40,14 @@ class IntroList extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                          {this.getData().map(data => 
-                          <tr key={data.id}>
-                          <td>{data.id}</td>
-                          <td>{data.title}</td>
-                          <td>{data.callno}</td>
-                          <td> 
-                          <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
-                          <button type='button' className="btn btn-sm btn-danger" onClick={() => console.log(data.id)}>ลบ</button>
+                          {this.getData().map((data) => 
+                          <tr key={data.id} >
+                            <td>{data.id}</td>
+                            <td>{data.title}</td>
+                            <td>{data.callno}</td>
+                            <td> 
+                            <button type='button' className="btn btn-sm btn-warning" >แก้ไข</button> 
+                            <button type='button' className="btn btn-sm btn-danger" onClick={this.props.deleteIntros(data.id)}>ลบ</button>
                         </td>
                       </tr>
                       )}
