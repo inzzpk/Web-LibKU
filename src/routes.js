@@ -12,6 +12,8 @@ import Intro from 'containers/Intro'
 import News from 'containers/News'
 import NewsList from 'containers/NewsList'
 import IntroList from 'containers/IntroList'
+import Dbs from 'containers/Dbs'
+import DbsList from 'containers/DbsList'
 
 
 export default (store, history) => (
@@ -23,6 +25,8 @@ export default (store, history) => (
 			<route path='introlist' component={IntroList} />
 			<route path='newslist' component={NewsList} />
 			<route path='news' component={News} />
+			<route path='dbs' component={Dbs} />
+			<route path='dbslist' component={DbsList} />
 		</Route>
 	</Router>
 )

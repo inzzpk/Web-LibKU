@@ -1,19 +1,19 @@
-const requestFetchSuccessNews = (response) =>  {
+const requestFetchSuccessDbs = (response) =>  {
 	return{
-		type : 'LOAD_NEWS_SUCCESS',
+		type : 'LOAD_DBS_SUCCESS',
 		response : response
 	}
 }
 
-const requestFailFetchNews = (error) =>  {
+const requestFailFetchDbs = (error) =>  {
 	return{
-		type : 'LOAD_NEWS_FAILURE',
+		type : 'LOAD_DBS_FAILURE',
 		error : error
 	}
 }
 
 
-export function fetchNews() {
+export function fetchDbs() {
 	let headers = {
 		'Accept': 'application/json',
 		'Content-Type': 'application/json'
@@ -21,8 +21,8 @@ export function fetchNews() {
 	let options = Object.assign({method: 'GET'})
 	options.header = headers
 	return (dispatch, getState) => {
-		//fetch(`http://localhost:8888/Laravel-LibKU/public/api/news`, options)
-		fetch(`http://localhost:7777/fetchNews`, options)
+		//fetch(`http://localhost:8888/Laravel-LibKU/public/api/dbsinfos`, options)
+		fetch(`http://localhost:7777/fetchDbs`, options)
 		.then(
 			(response) => {
 				var json = response.json();
@@ -31,11 +31,11 @@ export function fetchNews() {
 			}
 			return json.then(error => {throw err});
 			}).then( json => json).then(
-				(response) => {dispatch(requestFetchSuccessNews(response))
+				(response) => {dispatch(requestFetchSuccessDbs(response))
 			}).catch( err => {
-				dispatch(requestFailFetchNews(err))
+				dispatch(requestFailFetchDbs(err))
 			})
 
-		}
+	}
 }
 

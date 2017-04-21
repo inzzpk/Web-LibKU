@@ -1,8 +1,7 @@
-import { push } from 'react-router-redux'
 
+import { push } from 'react-router-redux'
+/*
 export function createIntros(val){
-	console.log(val)
-	console.log(val.title)
 	return (dispatch, getState) =>{
 		const param= [
 		`title=${val.title}`,
@@ -12,7 +11,7 @@ export function createIntros(val){
 		`image=${val.image}`,
 		].join('&')
 		let url = `http://localhost:8888/Laravel-LibKU/public/api/createBookInfos?${param}`
-		return gett(url).then(resp => {
+		return getintro(url).then(resp => {
 			console.log(resp)
 			dispatch(push('/introlist'))
 
@@ -22,7 +21,7 @@ export function createIntros(val){
 	}
 }
 
-export function gett(url){
+export function getintro(url){
 	let headers = {
 		'Accept': 'application/json',
 		'Content-Type': 'application/json'
@@ -37,4 +36,27 @@ export function gett(url){
 		}
 		return json.then(error => {throw err});
 	}).then( json => json)
+}
+*/
+
+
+export function createIntros(data) {
+	console.log(JSON.stringify(data))
+	return (dispatch) => {
+		fetch(`http://localhost:7777/addIntro`, {
+		  method: 'post',
+		  headers: {
+		    'Accept': 'application/json',
+		    'Content-Type': 'application/json'
+		  },
+		  body: JSON.stringify(data)
+		})
+		.then(function (response) {
+		    console.log(response);
+		    dispatch(push('/introlist'))
+		  })
+		.catch(function (error) {
+		    console.log(error);
+		  });
+	}
 }

@@ -28,6 +28,7 @@ class Header extends Component {
             <Nav bsStyle="tabs" className="nav-classroom" activeKey={this.state.key} onSelect={this.handleSelect.bind(this)}>
               <LinkContainer to="/newslist"><NavItem eventKey={1} >ประชาสัมพันธ์</NavItem></LinkContainer>
               <LinkContainer to="/introlist"><NavItem eventKey={2} >แนะนำหนังสือ</NavItem></LinkContainer>
+              <LinkContainer to="/dbslist"><NavItem eventKey={3} >ฐานข้อมูล</NavItem></LinkContainer>
     		</Nav>
           </div>
         </div>

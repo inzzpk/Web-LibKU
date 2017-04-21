@@ -6,53 +6,51 @@ import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { LinkContainer } from 'react-router-bootstrap'
 import * as actions from 'actions'
 
-const { fetchNews, deleteNews } = actions
+const { fetchDbs, deleteDbs } = actions
 
 
-class NewsList extends Component {
+class DbsList extends Component {
 
   componentWillMount() {
-    this.props.fetchNews()
+    this.props.fetchDbs()
   }
 
-  
-
   getData(){ 
-    return Object.keys(this.props.news).map(key => this.props.news[key])
+    return Object.keys(this.props.dbs).map(key => this.props.dbs[key])
   }
 
   deleteItems(id){
-    this.props.deleteNews(id).then( ()=> {
-      this.props.fetchNews()
+    this.props.deleteDbs(id).then( ()=> {
+      this.props.fetchDbs()
     }).catch( ()=>console.log("err"))
   }
 
-  render(){
+	render(){
   return (
       <div className="container">
           <div className="row">
             <div className="col-md-12">
               <div className="item">
                 <div className="media"> 
-                  <h2 className="media-heading"><b>ข่าว</b>
-                    <LinkContainer to="/news">
-                      <button className="btn btn-sm btn-info" style={{float: "right", margin: "10px"}}>เพิ่มข่าว</button> 
+                  <h2 className="media-heading"><b>ฐานข้อมูล</b>
+                    <LinkContainer to="/dbs">
+                      <button className="btn btn-sm btn-info" style={{float: "right", margin: "10px"}}>เพิ่มฐานข้อมูล</button> 
                     </LinkContainer></h2>
                     <table className="table table-striped">
                     <thead>
                       <tr>
                         <th>ลำดับ</th>
-                        <th>เรื่อง</th>
-                        <th>รายละเอียด</th>
+                        <th>ชื่อ</th>
+                        <th>Link รายละเอียด</th>
                         <th></th>
                       </tr>
                     </thead>
                     <tbody>
                           {this.getData().map((data,index) => 
-                          <tr key={index} >
-                            <td>{index}</td>
-                            <td>{data.title}</td>
-                            <td>{data.detail}</td>
+                          <tr key={index+1} >
+                            <td>{index+1}</td>
+                            <td>{data.name}</td>
+                            <td>{data.link}</td>
                             <td> 
                             <button type='button' className="btn btn-sm btn-danger" onClick={() => this.deleteItems(data.id) }>ลบ</button>
                         </td>
@@ -67,22 +65,22 @@ class NewsList extends Component {
           </div>
       </div>
   )
-  }
+	}
 }
 
 
 const mapStateToProps = (state) => ({
-    news: state.news.get.data
+    dbs: state.dbs.get.data
 })
 
 const mapDispatchToProps = {
-    fetchNews,
-    deleteNews
+    fetchDbs,
+    deleteDbs
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NewsList)
+	mapStateToProps,
+	mapDispatchToProps
+)(DbsList)
 
                           //<button type='button' className="btn btn-sm btn-danger" onClick={() => onClickButton({data.id},user)}>ลบ</button>

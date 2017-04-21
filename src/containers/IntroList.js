@@ -11,28 +11,18 @@ const { fetchIntros, deleteIntros } = actions
 
 class IntroList extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      current: true
-    }
-  }
-
-
   componentWillMount() {
     this.props.fetchIntros()
   }
-
-  
 
   getData(){ 
     return Object.keys(this.props.intro).map(key => this.props.intro[key])
   }
 
   deleteItems(id){
-    this.props.deleteIntros(id).then( ()=> {
+    this.props.deleteIntros(id).then( ()=>{
       this.props.fetchIntros()
-    })
+    }).catch( ()=>console.log("err"))
   }
 
 	render(){
@@ -43,9 +33,9 @@ class IntroList extends Component {
               <div className="item">
                 <div className="media"> 
                   <h2 className="media-heading"><b>แนะนำทรัพยากร</b>
-                    <LinkContainer to="/intro">
+                    <Link to="/intro">
                       <button className="btn btn-sm btn-info" style={{float: "right", margin: "10px"}}>เพิ่มทรัพยากร</button> 
-                    </LinkContainer></h2>
+                    </Link></h2>
                     <table className="table table-striped">
                     <thead>
                       <tr>
@@ -56,14 +46,14 @@ class IntroList extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                          {this.getData().map((data) => 
-                          <tr key={data.id} >
-                            <td>{data.id}</td>
+                          {this.getData().map((data,index) => 
+                          <tr key={index+1} >
+                            <td>{index+1}</td>
                             <td>{data.title}</td>
                             <td>{data.callno}</td>
                             <td> 
                             <button type='button' className="btn btn-sm btn-danger" onClick={() => this.deleteItems(data.id) }>ลบ</button>
-                        </td>
+                          </td>
                       </tr>
                       )}
                     </tbody>

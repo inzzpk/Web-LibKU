@@ -1,12 +1,12 @@
 import { push } from 'react-router-redux'
 
-export function deleteNews(id) {
+export function deleteDbs(id) {
 	console.log(JSON.stringify(id))
 	let data = {"id":id}
 	console.log(JSON.stringify(data))
 	return (dispatch) => {
 		return new Promise ( (resolve,reject)=>{
-			fetch(`http://localhost:7777/deleteNews`, {
+			fetch(`http://localhost:7777/deleteDbs`, {
 			  method: 'post',
 			  headers: {
 			    'Accept': 'application/json',
@@ -27,17 +27,17 @@ export function deleteNews(id) {
 }
 
 /*
-export function deleteNews(id) {
+export function deleteDbs(id) {
 	
 	return (dispatch, getState) =>{
 		const param= [
 		`id=${id}`,
 		].join('&')
-		let url = `http://localhost:8888/Laravel-LibKU/public/api/deleteNews?${param}`
-		return getdeletenews(url).then(resp => {
+		let url = `http://localhost:8888/Laravel-LibKU/public/api/deleteDbs?${param}`
+		return getdeletedbs(url).then(resp => {
 			// console.log(resp)
 			console.log("delete complete")
-			dispatch(push('/newslist'))
+			dispatch(push('/dbslist'))
 
 		}).catch( err => {
 			console.log(err)
@@ -45,7 +45,7 @@ export function deleteNews(id) {
 	}
 }
 
-export function getdeletenews(url){
+export function getdeletedbs(url){
 	let headers = {
 		'Accept': 'application/json',
 		'Content-Type': 'application/json'
