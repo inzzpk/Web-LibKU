@@ -35,9 +35,9 @@ class NewsList extends Component {
               <div className="item">
                 <div className="media"> 
                   <h2 className="media-heading"><b>ข่าว</b>
-                    <LinkContainer to="/news">
+                    <Link to="/news">
                       <button className="btn btn-sm btn-info" style={{float: "right", margin: "10px"}}>เพิ่มข่าว</button> 
-                    </LinkContainer></h2>
+                    </Link></h2>
                     <table className="table table-striped">
                     <thead>
                       <tr>
@@ -49,8 +49,8 @@ class NewsList extends Component {
                     </thead>
                     <tbody>
                           {this.getData().map((data,index) => 
-                          <tr key={index} >
-                            <td>{index}</td>
+                          <tr key={index+1} >
+                            <td>{index+1}</td>
                             <td>{data.title}</td>
                             <td>{data.detail}</td>
                             <td> 

@@ -33,9 +33,9 @@ class DbsList extends Component {
               <div className="item">
                 <div className="media"> 
                   <h2 className="media-heading"><b>ฐานข้อมูล</b>
-                    <LinkContainer to="/dbs">
+                    <Link to="/dbs">
                       <button className="btn btn-sm btn-info" style={{float: "right", margin: "10px"}}>เพิ่มฐานข้อมูล</button> 
-                    </LinkContainer></h2>
+                    </Link></h2>
                     <table className="table table-striped">
                     <thead>
                       <tr>
