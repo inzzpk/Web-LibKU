@@ -21,10 +21,6 @@ class Navbar extends Component {
 							<small className="hidden-xs"> Admin</small>
 						</Link>
 					</div>
-					<div className="collapse navbar-collapse">
-						<ul className="nav navbar-nav navbar-right">
-						</ul>
-					</div>
 				</div>
 			</nav>
 		)

@@ -1,3 +1,5 @@
+import { API_END_POINT } from '../config'
+
 const requestFetchSuccessNews = (response) =>  {
 	return{
 		type : 'LOAD_NEWS_SUCCESS',
@@ -21,8 +23,7 @@ export function fetchNews() {
 	let options = Object.assign({method: 'GET'})
 	options.header = headers
 	return (dispatch, getState) => {
-		//fetch(`http://localhost:8888/Laravel-LibKU/public/api/news`, options)
-		fetch(`http://localhost:7777/fetchNews`, options)
+		fetch(`${API_END_POINT}/fetchNews`, options)
 		.then(
 			(response) => {
 				var json = response.json();

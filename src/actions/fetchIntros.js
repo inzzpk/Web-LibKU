@@ -1,3 +1,5 @@
+import { API_END_POINT } from '../config'
+
 const requestFetchSuccessIntros = (response) =>  {
 	return{
 		type : 'LOAD_INTRO_SUCCESS',
@@ -21,8 +23,7 @@ export function fetchIntros() {
 	let options = Object.assign({method: 'GET'})
 	options.header = headers
 	return (dispatch, getState) => {
-		//fetch(`http://localhost:8888/Laravel-LibKU/public/api/bookinfos`, options)
-		fetch(`http://localhost:7777/fetchIntro`, options)
+		fetch(`${API_END_POINT}/fetchIntro`, options)
 		.then(
 			(response) => {
 				var json = response.json();

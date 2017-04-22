@@ -1,9 +1,10 @@
 import { push } from 'react-router-redux'
+import { API_END_POINT } from '../config'
 
 export function createNews(data) {
 	console.log(JSON.stringify(data))
 	return (dispatch) => {
-		fetch(`http://localhost:7777/addNews`, {
+		fetch(`${API_END_POINT}/addNews`, {
 		  method: 'post',
 		  headers: {
 		    'Accept': 'application/json',
@@ -20,41 +21,3 @@ export function createNews(data) {
 		  });
 	}
 }
-
-/*
-export function createNews(val){
-
-	return (dispatch, getState) =>{
-		const param= [
-		`title=${val.title}`,
-		`detail=${val.detail}`,
-		`link=${val.link}`,
-		`image=${val.image}`,
-		].join('&')
-		let url = `http://localhost:8888/Laravel-LibKU/public/api/createNews?${param}`
-		return getnews(url).then(resp => {
-			console.log(resp)
-			dispatch(push('/newslist'))
-
-		}).catch( err => {
-			console.log(err)
-		})
-	}
-}
-
-export function getnews(url){
-	let headers = {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json'
-	}
-	let options = Object.assign({method: 'GET'})
-	options.header = headers
-	return fetch(url,options).then(
-		resp => {
-			var json = resp.json();
-		if (resp.ok){
-			return json
-		}
-		return json.then(error => {throw err});
-	}).then( json => json)
-}*/
