@@ -13,7 +13,7 @@ export default class Home extends Component {
 					<div className="row">
 						<div className="col-md-12">
 							<div className="item">
-								<div className="media" style={{float: "center"}}> 
+								<div className="media" style={{textAlign: "center"}}> 
 									<h2 ><b>ยินดีต้อนรับ</b></h2>
 									<br/>
 									<h4>นางสาวพิมวนัช  โกศิยะกุล</h4>
